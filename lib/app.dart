@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:provide/appModel.dart';
-import 'package:provide/textModel.dart';
+import 'package:provide/Provider/appModel.dart';
+import 'package:provide/Provider/textModel.dart';
 import 'package:provider/provider.dart';
+import 'package:provide/Provider/restApi.dart';
 
 class App extends StatelessWidget {
   const App({Key? key}) : super(key: key);
@@ -10,7 +11,7 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     final appModel = Provider.of<AppModel>(context);
     final textModel = Provider.of<TextModel>(context);
-    return Center(
+    return SingleChildScrollView(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -65,6 +66,18 @@ class App extends StatelessWidget {
                   appModel.decrement();
                 },
                 child: const Text('Decrement'),
+              ),
+            ],
+          ),
+          const SizedBox(height: 20),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ElevatedButton(
+                onPressed: () {
+                  RestApi().get("https://jsonplaceholder.typicode.com/todos/1");
+                },
+                child: const Text('Get'),
               ),
             ],
           ),

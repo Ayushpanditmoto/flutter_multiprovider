@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:provide/app.dart';
-import 'package:provide/appModel.dart';
-import 'package:provide/textModel.dart';
+import 'package:provide/Provider/appModel.dart';
+import 'package:provide/Provider/textModel.dart';
+import 'package:provide/constants.dart';
+import 'package:provide/routes.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -22,16 +23,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Provider',
+      onGenerateRoute: MyRoutes.genrateRoute,
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: Scaffold(
-        appBar: AppBar(
-          centerTitle: true,
-          title: const Text('Provider'),
-        ),
-        body: const App(),
-      ),
+      initialRoute: homePageRoute,
     );
   }
 }
